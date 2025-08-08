@@ -1,0 +1,466 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Open+Sans&display=swap');
+
+body {
+  font-family: 'Open Sans', 'Georgia', serif;
+  background-color: #f0ede7;
+  color: #111;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+h1, h2 {
+  text-align: center;
+  font-weight: bold;
+  font-family: 'DM Serif Display', serif;
+  margin-bottom: 20px;
+}
+
+main,
+.contenido-principal,
+.login-main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.login-container,
+.conciertos-container {
+  background-color: #faf9f6;
+  padding: 30px;
+  margin-top: 40px;
+  border: 2px solid #000;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 1200px;
+  box-shadow: 4px 4px 0 #aaa;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #555;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+button,
+.cartilla button,
+.modal-content button,
+.btn-descargar,
+.btn-cancelar {
+  width: 100%;
+  padding: 12px;
+  background-color: #111;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 2px 2px 0 #444;
+}
+
+button:hover,
+.cartilla button:hover,
+.modal-content button:hover,
+.btn-descargar:hover,
+.btn-cancelar:hover {
+  background-color: #333;
+  transform: scale(1.03);
+  box-shadow: 4px 4px 0 #222;
+}
+
+.recordarme {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.recordarme label {
+  margin-left: 8px;
+  font-size: 14px;
+}
+
+.irRegistro {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.irRegistro a {
+  color: #000;
+  text-decoration: underline;
+}
+
+.error {
+  color: red;
+  text-align: center;
+}
+
+.grid-conciertos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin-top: 20px;
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 900px) {
+  .grid-conciertos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .grid-conciertos {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cartilla {
+  background-color: #fffdf8;
+  border: 2px solid #000;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 4px 4px 0 #999;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  min-height: 300px;
+  transition: transform 0.2s ease;
+}
+
+.cartilla:hover {
+  transform: translateY(-5px);
+}
+
+.cartilla h3,
+.cartilla p {
+  text-align: center;
+}
+
+.cartilla h3 {
+  margin: 0 0 10px;
+  font-size: 18px;
+}
+
+.cartilla p {
+  margin: 10px 0 15px;
+  font-size: 15px;
+}
+
+.cartilla button {
+  margin-top: 5px;
+  padding: 8px 12px;
+  font-size: 14px;
+}
+
+.imagen-evento {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin: 10px 0;
+}
+
+.perfil-usuario {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  background: #fff8e1;
+  padding: 10px 15px;
+  border: 1px solid #333;
+  border-radius: 10px;
+  font-size: 14px;
+  box-shadow: 3px 3px 0 #aaa;
+  cursor: pointer;
+}
+
+.perfil-usuario strong {
+  display: block;
+  font-weight: bold;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+footer {
+  background-color: #111;
+  color: #eee;
+  text-align: center;
+  padding: 10px 0;
+  width: 100%;
+  margin-top: auto;
+  font-size: 0.8rem;
+}
+
+.modal,
+#modalEditar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(20, 20, 20, 0.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-content,
+#modalEditar .contenido-modal {
+  background: #fffdf8;
+  padding: 30px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 4px 4px 0 #444;
+  animation: fadeIn 0.3s ease;
+}
+
+#modalEditar h3 {
+  font-size: 20px;
+  margin-top: 0;
+  color: #111;
+}
+
+#modalEditar input[type="text"],
+#modalEditar input[type="date"] {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+#modalEditar .modal-botones {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+#modalEditar .modal-botones button {
+  flex: 1;
+  padding: 10px;
+  font-size: 15px;
+  background-color: #111;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#modalEditar .modal-botones button:hover {
+  background-color: #333;
+}
+
+.modal-entrada {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(30, 30, 30, 0.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.contenido-entrada {
+  background: #fffbe6;
+  border: 3px dashed #222;
+  padding: 25px 20px;
+  border-radius: 20px;
+  text-align: center;
+  width: 300px;
+  max-width: 90%;
+  box-shadow: 0 0 10px #000;
+  animation: fadeIn 0.3s ease;
+}
+
+.contenido-entrada h3 {
+  margin-top: 0;
+  font-size: 20px;
+}
+
+.contenido-entrada p {
+  margin: 15px 0;
+  font-size: 15px;
+  white-space: pre-line;
+}
+
+.popup-compras {
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background-color: #fffef8;
+  border: 2px solid #222;
+  padding: 15px;
+  border-radius: 12px;
+  width: 300px;
+  max-height: 400px;
+  overflow-y: auto;
+  box-shadow: 4px 4px 0 #aaa;
+  display: none;
+  z-index: 999;
+}
+
+.popup-compras h3 {
+  margin-top: 0;
+  font-size: 16px;
+}
+
+.compra-item {
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.btn-descargar {
+  background-color: #28a745;
+  font-size: 12px;
+  padding: 6px 10px;
+}
+
+.btn-cancelar {
+  background-color: #d33;
+  font-size: 12px;
+  padding: 6px 10px;
+}
+
+.buscador {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.buscador input {
+  width: 60%;
+  max-width: 500px;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.buscador input:focus {
+  border-color: #2c3e50;
+  box-shadow: 0 0 5px rgba(44, 62, 80, 0.5);
+}
+
+body.fondo-login {
+  background: linear-gradient(to right, #ebe6dd, #e1dacd);
+}
+
+.layout-login {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.login-main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+#tablaUsuarios {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-size: 15px;
+  table-layout: auto;
+}
+
+#tablaUsuarios th,
+#tablaUsuarios td {
+  border: 1px solid #ccc;
+  padding: 12px 10px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+#tablaUsuarios th {
+  background-color: #f8f8f8;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  #tablaUsuarios {
+    display: block;
+    overflow-x: auto;
+    border: none;
+    width: 100%;
+  }
+
+  #tablaUsuarios thead {
+    display: none;
+  }
+
+  #tablaUsuarios tbody,
+  #tablaUsuarios tr,
+  #tablaUsuarios td {
+    display: block;
+    width: 100%;
+  }
+
+  #tablaUsuarios tr {
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+  }
+
+  #tablaUsuarios td {
+    text-align: left;
+    padding: 8px 10px 8px 50%;
+    position: relative;
+    border: none;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+    white-space: nowrap;
+  }
+
+  #tablaUsuarios td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 10px;
+    top: 8px;
+    font-weight: bold;
+    color: #333;
+  }
+
+  #tablaUsuarios td button {
+    width: auto;
+    padding: 6px 10px;
+    font-size: 13px;
+    border-radius: 4px;
+    white-space: nowrap;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
