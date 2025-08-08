@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Conciertos</title>
+  <link rel="stylesheet" href="css/estilos.css" />
+</head>
+<body>
+  <main class="contenido-principal">
+    <div class="conciertos-container">
+      <h1>🎵 Próximos Conciertos</h1>
+
+      <div id="perfilUsuario" class="perfil-usuario" onclick="toggleCompras()"></div>
+
+      <div class="buscador">
+        <input type="text" id="inputBuscar" placeholder="🔍 Buscar por nombre o ciudad..." oninput="filtrarConciertos()" />
+      </div>
+
+      <div id="listaConciertos" class="grid-conciertos"></div>
+    </div>
+
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <h3 id="modalTitulo"></h3>
+        <p id="modalTexto"></p>
+        <button id="btnEntrada" onclick="verEntrada()">Ver mi entrada</button>
+        <button onclick="cerrarModal()">Cerrar</button>
+      </div>
+    </div>
+
+    <div id="modalEntrada" class="modal-entrada">
+      <div class="contenido-entrada">
+        <h3>🎟 Tu entrada</h3>
+        <p id="textoEntrada"></p>
+        <button onclick="descargarEntradaDesdeModal()" class="btn-descargar">Descargar entrada</button>
+        <button onclick="cerrarModalEntrada()" class="btn-cancelar">Cerrar</button>
+      </div>
+    </div>
+
+    <div id="modalZona" class="modal">
+      <div class="modal-content">
+        <h3>Selecciona tu zona</h3>
+        <p>¿En qué zona deseas comprar tu entrada?</p>
+        <select id="zonaSeleccionada">
+          <option value="General">🎫 General</option>
+          <option value="Preferencial">⭐ Preferencial</option>
+          <option value="VIP">👑 VIP</option>
+        </select>
+        <br /><br />
+        <button onclick="confirmarCompra()">Confirmar</button>
+        <button onclick="cerrarModalZona()">Cancelar</button>
+      </div>
+    </div>
+
+    <div id="popupCompras" class="popup-compras">
+      <h3>Tus entradas</h3>
+      <ul id="listaComprasPopup"></ul>
+      <hr>
+      <button onclick="cerrarSesion()" class="btn-cerrar-sesion">Cerrar sesión</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Conciertos | Todos los derechos reservados</p>
+  </footer>
+  <script src="js/api.js"></script>
+  <script src="js/conciertos.js"></script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Registro</title>
+  <link rel="stylesheet" href="css/estilos.css" />
+</head>
+<body class="fondo-login layout-login">
+  <main class="login-main">
+    <div class="login-container">
+      <h1>Crear una cuenta</h1>
+      <p>Regístrate para acceder a conciertos exclusivos</p>
+
+      <form id="formRegistro" autocomplete="off">
+        <div class="campo">
+          <label for="nombre">Nombre completo</label>
+          <input type="text" id="nombre" required />
+        </div>
+
+        <div class="campo">
+          <label for="dni">DNI</label>
+          <input type="text" id="dni" maxlength="8" required />
+        </div>
+
+        <div class="campo">
+          <label for="correo">Correo electrónico</label>
+          <input type="email" id="correo" required />
+        </div>
+
+        <div class="campo">
+          <label for="contrasena">Contraseña</label>
+          <input type="password" id="contrasena" required />
+        </div>
+
+        <div class="campo">
+          <label for="confirmar">Confirmar contraseña</label>
+          <input type="password" id="confirmar" required />
+        </div>
+
+        <button type="submit" class="btn-principal">Registrarse</button>
+      </form>
+
+      <p class="error" id="registroError"></p>
+
+      <p class="irRegistro">¿Ya tienes una cuenta? <a href="login.html">Inicia sesión aquí</a></p>
+    </div>
+  </main>
+
+  <footer>
+    <p>🎶 Conciertos LATAM © 2025 Gabriel Vásquez. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="js/health-check.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/registro.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        mostrarAlertaServidor();
+      }, 1000);
+    });
+  </script>
+</body>
+</html>

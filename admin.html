@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Panel de Administración</title>
+  <link rel="stylesheet" href="css/estilos.css" />
+</head>
+<body>
+  <main class="contenido-principal">
+    <div class="conciertos-container">
+      <h1>🎛 Panel de Administración</h1>
+
+      <section>
+        <h2>📋 Usuarios Registrados</h2>
+        <table id="tablaUsuarios" border="1" width="100%" cellpadding="8" cellspacing="0">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>DNI</th>
+              <th>Correo</th>
+              <th>Rol</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>🎤 Eventos Disponibles</h2>
+        <div id="listaEventosAdmin" class="grid-conciertos">
+        </div>
+      </section>
+
+      <div class="centrado">
+        <button onclick="cerrarSesion()" class="btn-cerrar-sesion">Cerrar sesión</button>
+      </div>
+    </div>
+  </main>
+
+  <div id="modalEditar">
+    <div class="contenido-modal">
+      <h2> Editar Evento</h2>
+      <input type="hidden" id="editarIndex" />
+      <label for="editarNombre">Nombre:</label>
+      <input type="text" id="editarNombre" placeholder="Nuevo nombre del evento" />
+      <label for="editarFecha">Fecha:</label>
+      <input type="date" id="editarFecha" />
+      <div class="modal-botones">
+        <button onclick="guardarEdicion()">Guardar</button>
+        <button onclick="cerrarModalEditar()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 Administración | Todos los derechos reservados</p>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/admin.js"></script>
+  <script>
+    function cerrarSesion() {
+      limpiarToken();
+      if (!localStorage.getItem("recordarme")) {
+        localStorage.removeItem("recordarme");
+      }
+      window.location.href = "login.html";
+    }
+  </script>
+</body>
+</html>

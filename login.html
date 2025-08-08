@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Iniciar Sesión</title>
+  <link rel="stylesheet" href="css/estilos.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="fondo-login layout-login">
+  <main class="login-main">
+    <div class="login-container">
+      <h1>🎶 Iniciar Sesión</h1>
+      <p>Ingresa tus datos para acceder</p>
+
+      <form id="formLogin">
+        <div class="campo">
+          <label for="usuarioLogin"> Correo o DNI</label>
+          <input type="text" id="usuarioLogin" placeholder="ejemplo@correo.com o DNI" required />
+        </div>
+
+        <div class="campo">
+          <label for="contrasenaLogin"> Contraseña</label>
+          <input type="password" id="contrasenaLogin" placeholder="Tu contraseña" required />
+        </div>
+
+        <div class="recordarme">
+          <input type="checkbox" id="recordarme" />
+          <label for="recordarme">Recordarme</label>
+        </div>
+
+        <button type="submit" class="btn-principal">Iniciar Sesión</button>
+      </form>
+
+      <p class="error" id="loginError"></p>
+
+      <p class="irRegistro">¿No tienes una cuenta? <a href="index.html">Regístrate aquí</a></p>
+    </div>
+  </main>
+
+  <footer>
+    <p>🎶 Conciertos LATAM © 2025 Gabriel Vásquez. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="js/health-check.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/login.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        mostrarAlertaServidor();
+      }, 1000);
+    });
+  </script>
+</body>
+</html>
